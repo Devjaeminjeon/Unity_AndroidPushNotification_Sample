@@ -15,19 +15,12 @@ public class SampleManager : MonoBehaviour
     [SerializeField]
     private Button m_CancelButton = null;
 
-    void OnApplicationFocus(bool focusStatus)
+
+    private void OnApplicationQuit()
     {
 #if UNITY_ANDROID
-        if (focusStatus == true)
-        {
-            NotificationControl.CancelNotificationAll();
-        }
+        NotificationControl.CancelNotificationAll();
 #endif
-
-        m_PushNotificaitonButton_Immediately.onClick.AddListener(delegate { PushNotificationOnce(0, 0); });
-        m_PushNotificationButton_Delay.onClick.AddListener(delegate { PushNotificationOnce(1, 60); });
-        m_PushNotificationButton_Repeating.onClick.AddListener(delegate { PushNotificationRepeating(2, 60); });
-        m_CancelButton.onClick.AddListener(delegate { CancelAllNotification(); });
     }
 
     private void Awake()
@@ -37,6 +30,11 @@ public class SampleManager : MonoBehaviour
         NotificationControl.CancelNotificationAll();
         NotificationControl.ClearShowNotification();
 #endif
+
+        m_PushNotificaitonButton_Immediately.onClick.AddListener(delegate { PushNotificationOnce(0, 0); });
+        m_PushNotificationButton_Delay.onClick.AddListener(delegate { PushNotificationOnce(1, 60); });
+        m_PushNotificationButton_Repeating.onClick.AddListener(delegate { PushNotificationRepeating(2, 60); });
+        m_CancelButton.onClick.AddListener(delegate { CancelAllNotification(); });
     }
 
     public void PushNotificationOnce(int id, int delayTime)

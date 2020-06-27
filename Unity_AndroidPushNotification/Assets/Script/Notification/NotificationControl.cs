@@ -122,8 +122,8 @@ public static class NotificationControl
             long delayMS = delaySec * 1000;
             long repeatMS = repSec * 1000;
 
-            pluginClass.CallStatic("SetNotificationRepeating", id, bundleIdentifier, delayMS, repeatMS, titleOrNull, messageOrNull, tickerOrNull, iconOrNull, isSmall_Icon,
-                ColorToInt(color), isSound, soundNameOrNull, isVibrate, isLight);
+            pluginClass.CallStatic("SetNotificationRepeating", id, bundleIdentifier, delayMS, repeatMS, titleOrNull, messageOrNull, tickerOrNull, iconOrNull, ColorToInt(color),
+                isSmall_Icon, isSound, soundNameOrNull, isVibrate, isLight);
         }
         else
         {
